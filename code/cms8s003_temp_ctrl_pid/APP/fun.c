@@ -150,6 +150,7 @@ void funShowManage (void)
 				if(fun.showTempLockTime == 0 && fun.state & (FUN_STA_LOCK_DOWN|FUN_STA_LOCK_UP))
 				{
 					fun.state &= ~(FUN_STA_LOCK_DOWN|FUN_STA_LOCK_UP);
+					HalBuzzerSet(2,150,70);
 				}
 			}
 			else
@@ -243,7 +244,7 @@ void funCtrlManage (void)
 	}
 	if(!(fun.state & FUN_STA_ADJUST_MODE))//非调整模式
 	{
-		if((HalKeyGetShortPress(HAL_KEY_SET) && !(fun.state & FUN_STA_LOCK_SET))//短按设置键 (切换温度挡位)
+		if((HalKeyGetShortPress(HAL_KEY_SET) && !(fun.state & FUN_STA_LOCK_SET)) && fun.state & FUN_STA_POWER//短按设置键 (切换温度挡位)
 		#if FUN_TEST_TEMP_GEAR == 1
 			|| (fun.state & FUN_STA_POWER && fun.testGearTime == 0 && !(fun.state & FUN_STA_ADJUST_MODE))
 		#endif
@@ -264,7 +265,7 @@ void funCtrlManage (void)
 			fun.state |= FUN_STA_LED_FLAG;
 			HalBuzzerSet(1,300,150);
 		}
-		if(HalKeyGetShortPress(HAL_KEY_LOCK))//短按锁定键 (锁定设置)
+		if(HalKeyGetShortPress(HAL_KEY_LOCK) && fun.state & FUN_STA_POWER)//短按锁定键 (锁定设置)
 		{
 			fun.state = (fun.state & FUN_STA_LOCK_SET) ? fun.state&~FUN_STA_LOCK_SET : fun.state|FUN_STA_LOCK_SET;
 			HalBuzzerSet(3,300,150);
