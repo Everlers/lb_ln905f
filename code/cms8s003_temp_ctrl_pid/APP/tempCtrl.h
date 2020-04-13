@@ -21,7 +21,7 @@
 #define TCL_RUSH_TEMP_STOP_OFFSET							-5		//冲温停止差值（设定温度的差值，用于进入恒温状态）
 #define TCL_CONT_TEMP_MAX_PERIOD							150		//最大恒温周期
 #define TCL_CONT_TEMP_MIN_PERIOD_220V					9			//最小恒温周期 110V
-#define TCL_CONT_TEMP_MIN_PERIOD_110V					6			//最小恒温周期 110V
+#define TCL_CONT_TEMP_MIN_PERIOD_110V					5			//最小恒温周期 110V
 #define TCL_CONT_TEMP_MIN_DUTY_220V						2			//恒温最小占空比（不得全关，需要采集发热体阻值）220V
 #define TCL_CONT_TEMP_MIN_DUTY_110V						4			//恒温最小占空比（不得全关，需要采集发热体阻值）110V
 #define TCL_CONT_TEMP_SPEED										900		//恒温速度 执行时间 单位：毫秒

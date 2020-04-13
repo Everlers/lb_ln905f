@@ -67,7 +67,7 @@ void tclTempManage (void)
 			if(tcl.curTemp >= (tcl.setTemp + TCL_RUSH_TEMP_STOP_OFFSET)){//如果即将到达设定温度
 				tcl.state &= ~TCL_STA_RUSH_TEMP;//退出冲温
 				tcl.state |= TCL_STA_CONT_TEMP;//进入恒温状态
-				pidSetOutValue(PID_MAX_OUT_VALUE/2);//设定恒温初始值
+				pidSetOutValue(PID_MAX_OUT_VALUE);//设定恒温初始值
 			}
 		}
 		else if(tcl.state & TCL_STA_CONT_TEMP && tcl.contTempSpeed == 0)//恒温状态
