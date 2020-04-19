@@ -1,7 +1,7 @@
 #include "hal_adc.h"
 #include "hal_pwm.h"
 
-u8 adcTimeout;
+u8 adcTimeout; 
 static u8 channel;
 static u16 adcValue;
 static u8 con0 = 0,con1 = 0,con2 = 0;
